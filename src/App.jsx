@@ -116,7 +116,7 @@ const styles = {
   },
   card: {
     width: "100%",
-    maxWidth: "656px",
+    maxWidth: "820px",
     minHeight: "1080px",
     padding: "40px",
     boxSizing: "border-box",
@@ -140,14 +140,14 @@ const styles = {
   appNameMini: {
     fontSize: "clamp(18px, 4vw, 1px)",
     fontWeight: "500",
-    marginTop: "0px", // yhdenmukaistettu
+    marginTop: "30px", // yhdenmukaistettu
     marginBottom: "2px",
   },
   pageTitle: {
     fontSize: "clamp(20px, 3vw, 26px)",
     fontWeight: "500",
     marginBottom: "1px",
-    marginTop: "100px",
+    marginTop: "90px",
   },
   subtitle: {
     fontSize: "16px",
@@ -228,7 +228,7 @@ const styles = {
     color: "#000",
     cursor: "pointer",
     maxWidth: "120px",
-    marginTop: "5px",
+    marginTop: "50px",
     marginBottom: "10px"
   },
 };
