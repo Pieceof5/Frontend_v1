@@ -35,7 +35,7 @@ function HomePage() {
   );
 }
 
-// Kurssilistausopettajalle
+// TeacherCoursesPage nyt näyttää logo + kurssilista + alatunniste
 function TeacherCoursesPage() {
   const navigate = useNavigate();
   const courses = ["Kurssi 1", "Kurssi 2", "Kurssi 3"];
@@ -43,8 +43,12 @@ function TeacherCoursesPage() {
   return (
     <div style={styles.app}>
       <div style={styles.card}>
-        <h1 style={styles.appName}>Valitse kurssi</h1>
-        <p style={styles.subtitle}>Klikkaa kurssia jatkaaksesi tehtävien hallintaan</p>
+        <img src={logo} alt="Logo" style={styles.logo} />
+        <div style={styles.textContainer}>
+          <h1 style={styles.appName}>Valitse kurssi</h1>
+          <p style={styles.subtitle}>Klikkaa kurssia jatkaaksesi tehtävien hallintaan</p>
+        </div>
+
         <ul style={styles.courseList}>
           {courses.map((course, index) => (
             <li key={index} style={styles.courseItem}>
@@ -57,28 +61,25 @@ function TeacherCoursesPage() {
             </li>
           ))}
         </ul>
+
+        <p style={styles.alatunniste}>Helsingin Yliopisto</p>
       </div>
     </div>
   );
 }
 
-// TeacherFrontPage Wrapper, mutta ilman maxWidth/padding ongelmaa
+// TeacherFrontPage Wrapper
 function TeacherFrontPageWrapper() {
   const { courseName } = useParams();
   const navigate = useNavigate();
 
   return (
-    <div style={styles.fullScreen}>
-      {/* Header */}
-      <div style={styles.header}>
-        <button style={styles.backButton} onClick={() => navigate("/teacher")}>
-          ← Takaisin kursseille
+    <div style={styles.app}>
+      <div style={styles.frontPageContainer}>
+        <button onClick={() => navigate("/teacher")} style={styles.backButton}>
+          &larr; Takaisin kursseille
         </button>
-        <span style={styles.courseTitle}>{courseName}</span>
-      </div>
-
-      {/* TeacherFrontPage keskitettynä */}
-      <div style={styles.centerContent}>
+        <h2 style={{ textAlign: "center", marginBottom: "10px" }}>{courseName}</h2>
         <TeacherFrontPage />
       </div>
     </div>
@@ -98,7 +99,7 @@ function App() {
   );
 }
 
-// Tyylit yhdistetty
+// Tyylit
 const styles = {
   app: {
     minHeight: "100vh",
@@ -113,7 +114,6 @@ const styles = {
   card: {
     width: "100%",
     maxWidth: "500px",
-    minHeight: "800px",
     padding: "40px",
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
@@ -123,11 +123,30 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  frontPageContainer: {
+    width: "100%",
+    maxWidth: "900px",
+    padding: "20px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+    boxSizing: "border-box",
+  },
   logo: {
     width: "50px",
     height: "auto",
     alignSelf: "flex-start",
     marginBottom: "10px",
+  },
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "5px",
+    marginBottom: "20px",
   },
   appName: {
     fontSize: "clamp(22px, 4vw, 36px)",
@@ -135,12 +154,14 @@ const styles = {
     marginBottom: "2px",
     textTransform: "none",
     color: "#000000",
+    textAlign: "center"
   },
   subtitle: {
     fontSize: "clamp(16px, 2.5vw, 15px)",
     color: "#5C5C5C",
     lineHeight: "1.1",
     marginTop: "0px",
+    textAlign: "center"
   },
   bottomContainer: {
     width: "100%",
@@ -200,29 +221,8 @@ const styles = {
     backgroundColor: "#fff",
     color: "#000",
     cursor: "pointer",
-    marginRight: "10px",
-  },
-  fullScreen: {
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "#dcdcdc",
-    display: "flex",
-    flexDirection: "column",
-    padding: "20px",
-    boxSizing: "border-box",
-  },
-  header: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    marginBottom: "20px",
-  },
-  courseTitle: { fontSize: "20px", fontWeight: "500" },
-  centerContent: {
-    flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    marginBottom: "10px",
+    alignSelf: "flex-start"
   },
 };
 
