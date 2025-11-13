@@ -113,13 +113,13 @@ const styles = {
     width: "100vw",
     display: "flex",
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
     backgroundColor: "#dcdcdc",
     padding: "20px",
     boxSizing: "border-box",
   },
   card: {
- width: "620px",
+    width: "620px",
     maxWidth: "90vw",
     minHeight: "820px",
     backgroundColor: "#fff",
@@ -129,8 +129,8 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
   },
-  header: {
-    padding: "20px 30px",
+   header: {
+    padding: "30px 40px 20px 30px",
   },
   divider: {
     height: "1px",
@@ -144,7 +144,7 @@ const styles = {
     boxSizing: "border-box",
   },
   footer: {
-    padding: "2px 30px",
+    padding: "2px 40px",
     textAlign: "center",
     borderTop: "1px solid #e0e0e0",
   },
