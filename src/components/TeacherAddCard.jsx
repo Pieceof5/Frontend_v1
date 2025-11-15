@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import LayoutCard from "./LayoutCard";
 import { teacherAddCardStyles as styles } from "../styles/commonStyles";
 
-function TeacherAddCard({ courseName, navigateBack }) {
+function TeacherAddCard({ courseName }) {
+  const navigate = useNavigate();
   const [cards, setCards] = useState([]);
   const [newCardName, setNewCardName] = useState("");
 
@@ -111,7 +113,7 @@ function TeacherAddCard({ courseName, navigateBack }) {
   const handleColumnOptionsChange = (cardIndex, colIndex, value) => {
     const newCards = [...cards];
     newCards[cardIndex].columns[colIndex].optionsRaw = value;
-    newCards[cardIndex].columns[colIndex].options = value.split(",");
+    newCards[cardIndex].columns[colIndex].options = value.split(", ");
     setCards(newCards);
   };
 
@@ -130,10 +132,10 @@ function TeacherAddCard({ courseName, navigateBack }) {
   return (
     <div style={styles.app}>
       <LayoutCard
-        header={<img src={logo} alt="Logo" style={common.logo} />}
+        header={<img src={logo} alt="Logo" style={styles.logo} />}
         footer={<p style={styles.alatunniste}>@Helsingin Yliopisto</p>}
       >
-        <button style={styles.backButton} onClick={navigateBack}>
+        <button style={styles.backButton} onClick={() => navigate(-1)}>
           ← Takaisin
         </button>
         <h1 style={styles.appNameMini}>DigiDens</h1>

@@ -4,6 +4,8 @@ import LayoutCard from "../components/LayoutCard";
 import logo from "../assets/logo.png";
 import { styles } from "../styles/commonStyles";
 
+
+// Kotisivu (/)
 function HomePage() {
   const navigate = useNavigate();
 
@@ -22,10 +24,10 @@ function HomePage() {
           Helsingin Yliopiston<br />Hammaslääketieteen oppimisympäristö
         </p>
         <div style={styles.buttonContainer}>
-          <button style={styles.button} onClick={() => navigate("/teacher")}>
+          <button style={styles.button} onClick={() => navigate("/teacherCourses")}>
             Kirjaudu Sisään Opettajana
           </button>
-          <button style={styles.button} onClick={() => navigate("/student")}>
+          <button style={styles.button} onClick={() => navigate("/studentCoursesN")}>
             Kirjaudu Sisään Opiskelijana
           </button>
         </div>

@@ -1,13 +1,9 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import LayoutCard from "../components/LayoutCard";
 import logo from "../assets/logo.png";
-import { kurssit } from "../mockData/kurssit";
 import { styles } from "../styles/commonStyles";
 
-
-// Kurssivalikko (/teacherCourses)
-function TeacherCoursesPage() {
+function TeacherYearsPage() {
   const navigate = useNavigate();
 
   return (
@@ -21,7 +17,7 @@ function TeacherCoursesPage() {
         footer={<p style={styles.alatunniste}>@Helsingin Yliopisto</p>}
       >
         <button style={styles.backButton} onClick={() => navigate("/")}>
-          ← Takaisin
+          ← Taka
         </button>
 
         <h1 style={styles.appNameMini}>DigiDens</h1>
@@ -36,7 +32,7 @@ function TeacherCoursesPage() {
               <li key={course.id} style={styles.courseItem}>
                 <button
                   style={styles.courseButton}
-                  onClick={() => navigate(`/teacherCourses/${course.kurssitunnus}`)}
+                  onClick={() => navigate(`/teacher/${year}`)}
                 >
                   {course.kurssitunnus} — {course.nimi}
                 </button>
@@ -49,4 +45,4 @@ function TeacherCoursesPage() {
   );
 }
 
-export default TeacherCoursesPage;
+export default TeacherYearsPage;
