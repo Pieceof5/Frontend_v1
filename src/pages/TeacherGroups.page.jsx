@@ -1,5 +1,6 @@
 import React, { useState } from "react"; 
 import { ryhmat } from "../mockData/ryhmat";
+import { opiskelijat } from "../mockData/opiskelijat";
 import { useNavigate, useParams } from "react-router-dom";
 import logo from "../assets/logo.png";
 import LayoutCard from "../components/LayoutCard";
@@ -12,6 +13,11 @@ export default function TeacherGroupsPage() {
 
   // Ryhmät aakkosjärjestyksessä
   const ryhmalistaus = ryhmat.sort((a, b) => a.nimi.localeCompare(b.nimi));
+
+  // Function to count students in a group
+  const getStudentCount = (ryhmaId) => {
+    return opiskelijat.filter((student) => student.ryhmaId === ryhmaId).length;
+  };
 
   // Placeholder for cards - you can add mock data later
   const kortit = [];
@@ -74,6 +80,7 @@ export default function TeacherGroupsPage() {
             {/* Ryhmät isona painikkeena */}
             <div style={styles.itemContainer}>
               {ryhmalistaus.map((ryhma) => {
+                const studentCount = getStudentCount(ryhma.id);
                 return (
                   <button
                     key={ryhma.id}
@@ -88,6 +95,9 @@ export default function TeacherGroupsPage() {
                     <div style={styles.courseInfo}>
                       <div>
                         <p>{ryhma.nimi}</p>
+                        <p style={{ fontSize: "0.9em", color: "#666" }}>
+                          {studentCount} opiskelijaa
+                        </p>
                       </div>
                       <div style={styles.arrow}>→</div>
                     </div>

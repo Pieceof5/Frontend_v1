@@ -51,9 +51,9 @@ export default function TeacherStudentListPage() {
                 onClick={() => alert(`Valitsit opiskelijan: ${student.etunimi} ${student.sukunimi}`)}
               >
                 <div style={styles.courseInfo}>
-                  <div>
-                    <h3>{student.opiskelijanumero}</h3>
-                    <p>{student.etunimi} {student.sukunimi}</p>
+                  <div style={{ textAlign: "left", width: "100%" }}>
+                    <p style={{ fontSize: "0.9em", color: "#666", margin: "0 0 4px 0" }}>{student.opiskelijanumero}</p>
+                    <h3 style={{ margin: 0 }}>{student.etunimi} {student.sukunimi}</h3>
                   </div>
                   <div style={styles.arrow}>→</div>
                 </div>
