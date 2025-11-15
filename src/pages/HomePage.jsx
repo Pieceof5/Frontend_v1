@@ -27,7 +27,7 @@ function HomePage() {
           <button style={styles.button} onClick={() => navigate("/teacherCourses")}>
             Kirjaudu Sisään Opettajana
           </button>
-          <button style={styles.button} onClick={() => navigate("/studentCoursesN")}>
+          <button style={styles.button} onClick={() => navigate("/studentCourses")}>
             Kirjaudu Sisään Opiskelijana
           </button>
         </div>
