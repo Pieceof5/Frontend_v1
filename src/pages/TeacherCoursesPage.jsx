@@ -54,7 +54,10 @@ function TeacherCoursesPage() {
                     navigate(path);
                   }}
                 >
-                  {course.kurssitunnus} — {course.nimi}
+                  <div style={{ fontWeight: "bold", marginBottom: "4px" }}>
+                    {course.kurssitunnus}
+                  </div>
+                  <div>{course.nimi}</div>
                 </button>
               </li>
             ))}
