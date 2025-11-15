@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import TeacherAddCard from "../components/TeacherAddCard";
 
-function TeacherCourseDetailPage() {
+function TeacherAddCardPage() {
   const { courseName } = useParams();
 
   return (
@@ -12,4 +12,4 @@ function TeacherCourseDetailPage() {
   );
 }
 
-export default TeacherCourseDetailPage;
+export default TeacherAddCardPage;

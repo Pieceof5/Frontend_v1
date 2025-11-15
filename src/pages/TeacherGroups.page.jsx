@@ -4,19 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import logo from "../assets/logo.png";
 import LayoutCard from "../components/LayoutCard";
 import { studentFrontStyles as styles } from "../styles/commonStyles";
-import TeacherAddCard from "../components/TeacherAddCard";
 
 export default function TeacherGroupsPage() {
   const navigate = useNavigate();
-  const { courseName } = useParams();
-  const [activeView, setActiveView] = useState("groups"); // "groups" or "details"
+  const { courseName, yearId } = useParams();
+  const [activeView, setActiveView] = useState("groups"); // "groups" or "cards"
 
   // Ryhmät aakkosjärjestyksessä
   const ryhmalistaus = ryhmat.sort((a, b) => a.nimi.localeCompare(b.nimi));
 
-  if (activeView === "details") {
-    return <TeacherAddCard courseName={courseName} />;
-  }
+  // Placeholder for cards - you can add mock data later
+  const kortit = [];
 
   return (
     <div style={styles.app}>
@@ -57,39 +55,92 @@ export default function TeacherGroupsPage() {
           <button
             style={{
               ...styles.primaryButton,
-              backgroundColor: activeView === "details" ? "#007bff" : "#6c757d",
+              backgroundColor: activeView === "cards" ? "#007bff" : "#6c757d",
               padding: "10px 20px",
               fontSize: "16px",
             }}
-            onClick={() => setActiveView("details")}
+            onClick={() => setActiveView("cards")}
           >
-            Kurssin tiedot
+            Kortit
           </button>
         </div>
 
-        <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>
-          {ryhmalistaus.length > 0 ? ryhmalistaus[0].kurssitunnus : ""}: Ryhmät
-        </h1>
+        {activeView === "groups" ? (
+          <>
+            <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>
+              {ryhmalistaus.length > 0 ? ryhmalistaus[0].kurssitunnus : ""}: Ryhmät
+            </h1>
 
-        {/* Ryhmät isona painikkeena */}
-        <div style={styles.itemContainer}>
-          {ryhmalistaus.map((ryhma) => {
-            return (
-              <button
-                key={ryhma.id}
-                style={styles.itemButton}
-                onClick={() => alert(`Siirryt ryhmään: ${ryhma.nimi}`)}
-              >
-                <div style={styles.courseInfo}>
-                  <div>
-                    <p>{ryhma.nimi}</p>
-                  </div>
-                  <div style={styles.arrow}>→</div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+            {/* Ryhmät isona painikkeena */}
+            <div style={styles.itemContainer}>
+              {ryhmalistaus.map((ryhma) => {
+                return (
+                  <button
+                    key={ryhma.id}
+                    style={styles.itemButton}
+                    onClick={() => alert(`Siirryt ryhmään: ${ryhma.nimi}`)}
+                  >
+                    <div style={styles.courseInfo}>
+                      <div>
+                        <p>{ryhma.nimi}</p>
+                      </div>
+                      <div style={styles.arrow}>→</div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>
+              {ryhmalistaus.length > 0 ? ryhmalistaus[0].kurssitunnus : ""}: Kortit
+            </h1>
+
+            {/* Kortit isona painikkeena */}
+            <div style={styles.itemContainer}>
+              {kortit.length === 0 ? (
+                <p>Ei vielä kortteja. Lisää uusi kortti.</p>
+              ) : (
+                kortit.map((kortti) => {
+                  return (
+                    <button
+                      key={kortti.id}
+                      style={styles.itemButton}
+                      onClick={() => alert(`Siirryt korttiin: ${kortti.nimi}`)}
+                    >
+                      <div style={styles.courseInfo}>
+                        <div>
+                          <p>{kortti.nimi}</p>
+                        </div>
+                        <div style={styles.arrow}>→</div>
+                      </div>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+
+            {/* Lisää kortti -painike */}
+            <button
+              style={{
+                ...styles.primaryButton,
+                marginTop: "20px",
+                padding: "12px 24px",
+                fontSize: "16px",
+                width: "100%",
+              }}
+              onClick={() => {
+                const route = yearId 
+                  ? `/teacherYears/${yearId}/teacherCourses/${courseName}/teacherCards`
+                  : `/teacherCourses/${courseName}/teacherCards`;
+                navigate(route);
+              }}
+            >
+              + Luo uusi kortti
+            </button>
+          </>
+        )}
       </LayoutCard>
     </div>
   );
