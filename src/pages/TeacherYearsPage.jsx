@@ -33,7 +33,7 @@ function TeacherYearsPage() {
         }
         footer={<p style={dsStyles.footer}>@Helsingin Yliopisto</p>}
       >
-        {/* Navigaatiolinkit */}
+        {/* Navigointipalkit */}
         <div style={{ marginTop: "-10px", marginBottom: "30px" }}>
           <ds-link
             ds-text="Kotisivu"
