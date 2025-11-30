@@ -20,9 +20,8 @@ export default function TeacherGroupsPage() {
     return opiskelijat.filter((student) => student.ryhmaId === ryhmaId).length;
   };
 
-    // Get year info for breadcrumbs
-    const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
-  
+  // Get year info for breadcrumbs
+  const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
 
 
   // Placeholder for cards - you can add mock data later
@@ -85,14 +84,14 @@ export default function TeacherGroupsPage() {
         <div style={{ display: "flex", gap: "15px", }}>
           <ds-button
             ds-value="Ryhmät"
-            ds-variant="supplementary"
+            ds-variant="secondary"
             ds-colour="black"
             onClick={() => setActiveView("groups")}
           >
           </ds-button>
           <ds-button
             ds-value="Kortit"
-            ds-variant="supplementary"
+            ds-variant="secondary"
             ds-colour="black"
             onClick={() => setActiveView("cards")}
           >
@@ -145,7 +144,7 @@ export default function TeacherGroupsPage() {
             ></ds-text-input>
 
 
-            {/* Kortit isona painikkeena */}
+            {/* Kortit isona painikkeena (EI VIELÄ HS-tyylin MUKAINEN*/}
             <div style={styles.itemContainer}>
               {kortit.length === 0 ? (
                 <p>Ei vielä kortteja. Lisää uusi kortti.</p>
