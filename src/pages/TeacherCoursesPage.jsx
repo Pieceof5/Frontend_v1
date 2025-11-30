@@ -28,7 +28,11 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
       <LayoutCard
         header={
           <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-            <ds-icon ds-name="ds_flame" ds-size="4rem" ds-colour="ds-palette-black" />
+            <ds-icon
+              ds-name="ds_flame"
+              ds-size="4rem"
+              ds-colour="ds-palette-black-95"
+            />
           </div>
         }
         footer={<p style={dsStyles.footer}>@Helsingin Yliopisto</p>}
@@ -86,7 +90,6 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
                 ds-url={yearId ? `/teacherYears/${yearId}/teacherCourses/${course.kurssitunnus}` : `/teacherCourses/${course.kurssitunnus}`}
                 ds-url-target="_self"
                 ds-tag="Kurssi"
-                ds-horizontal="false"
               >
                 {/* Edistymispalkki kortin sisällä */}
                 <div

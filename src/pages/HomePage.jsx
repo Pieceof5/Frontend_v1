@@ -17,7 +17,7 @@ function HomePage() {
             <ds-icon
               ds-name="ds_flame"
               ds-size="4rem"
-              ds-colour="ds-palette-black"
+              ds-colour="ds-palette-black-95"
             >
             </ds-icon>
             <div style={{ maxWidth: "200px" }}>

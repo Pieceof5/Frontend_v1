@@ -6,7 +6,7 @@ export const dsStyles = {
         fontSize: '20px',
         lineHeight: '24px',
         letterSpacing: '-0.4px',
-        color: "#000000",
+        color: "#0c0c0c",
         margin: "0",
     },
     // ds-heading-xLarge
@@ -15,7 +15,7 @@ export const dsStyles = {
         fontSize: '48px',
         lineHeight: '52px',
         letterSpacing: '-1.4px',
-        color: "#000000"        
+        color: "#0c0c0c"        
     },
     // ds-bodyText-medium
     subTitle: {
@@ -23,7 +23,7 @@ export const dsStyles = {
         fontSize: '16px',
         lineHeight: '150%',
         letterSpacing: '0px',
-        color: "#808080",
+        color: "#4d4d4d"
     },
     // ds-bodyText-medium
     footerText: {
@@ -31,7 +31,7 @@ export const dsStyles = {
         fontSize: '16px',
         lineHeight: '150%',
         letterSpacing: '0px',
-        color: "#808080",
+        color: "rgba(0,0,0,0.4)",
     },
     // ds-heading-medium
     pageTitle: {
@@ -39,7 +39,7 @@ export const dsStyles = {
         fontSize: '20px',
         lineHeight: '24px',
         letterSpacing: '-0.4px',
-        color: "#000000"   
+        color: "#0c0c0c"   
     },
 
 // COMPONENTS
