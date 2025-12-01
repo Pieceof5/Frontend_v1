@@ -49,8 +49,9 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
         contentStyle={{ padding: "15px 30px" }}
         footer={<p style={styles.footerText}>@Helsingin Yliopisto</p>}
       >
+
+
         {/* Takaisin-painike */}
-      
         <ds-button onClick={() => navigate(-1)}
   ds-size="small"
   ds-value="Takaisin"
@@ -58,6 +59,8 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
   ds-icon-position="start"
   ds-icon="arrow-back"
 ></ds-button>
+
+
 
         {/* Kurssinavigointipalkki */}
         <div style={styles.navBar}>
@@ -72,8 +75,10 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
 
 
 
+
+
         {/* Kurssit isona painikkeena */}
-      
+
         <div style={styles.itemContainer}>
           {kurssitOppilaalle.map((k) => {
             const edistyminen = Math.floor(
