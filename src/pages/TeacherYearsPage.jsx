@@ -41,12 +41,6 @@ function TeacherYearsPage() {
             ds-weight="bold"
             ds-href="/"
           ></ds-link>
-          <ds-link
-            ds-text="Lukuvuodet"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href="/teacherYears"
-          ></ds-link>
         </div>
 
         {/* Sivun otsikko */}

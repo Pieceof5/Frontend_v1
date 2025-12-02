@@ -55,7 +55,6 @@ export default function TeacherGroupsPage() {
         {/* Navigointipalkit */}
         <div style={{ marginTop: "-10px", marginBottom: "30px" }}>
           <ds-link ds-text="Kotisivu" ds-icon="chevron_forward" ds-weight="bold" ds-href="/" />
-          <ds-link ds-text="Lukuvuodet" ds-icon="chevron_forward" ds-weight="bold" ds-href="/teacherYears" />
           {year && (
             <ds-link
               ds-text={year.nimi}
@@ -64,26 +63,6 @@ export default function TeacherGroupsPage() {
               ds-href={`/teacherYears/${yearId}/teacherCourses`}
             />
           )}
-          <ds-link
-            ds-text="Kurssit"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={
-              yearId
-                ? `/teacherYears/${yearId}/teacherCourses`
-                : "/teacherCourses"
-            }
-          />
-          <ds-link
-            ds-text="Ryhmät ja kortit"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={
-              yearId
-                ? `/teacherYears/${yearId}/teacherCourses/${courseName}`
-                : `/teacherCourses/${courseName}`
-            }
-          />
         </div>
 
         {/* Näkymät */}

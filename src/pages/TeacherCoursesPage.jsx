@@ -45,26 +45,14 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
             ds-weight="bold"
             ds-href="/"
           />
-          <ds-link
-            ds-text="Lukuvuodet"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href="/teacherYears"
-          />
           {year && (
             <ds-link
               ds-text={year.nimi}
               ds-icon="chevron_forward"
               ds-weight="bold"
-              ds-href={`/teacherYears/${yearId}/teacherCourses`}
+              ds-href={`/teacherYears`}
             />
           )}
-          <ds-link
-            ds-text="Kurssit"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={yearId ? `/teacherYears/${yearId}/teacherCourses` : "/teacherCourses"}
-          />
         </div>
 
         {/* Sivun otsikko */}
