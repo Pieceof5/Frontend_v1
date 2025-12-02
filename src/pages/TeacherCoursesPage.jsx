@@ -66,7 +66,8 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
           onInput={(e) => setQuery(e.target.value)}
         />
 
-        {/* Kurssikortit */}
+
+        {/* Kurssien ja kurssitunnusten haku */}
         <div style={styles.listContainer}>
           {filteredCourses.map((course) => {
             const osallistuminen = kurssiOsallistuminen.find(
@@ -77,6 +78,7 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
             const total = osallistuminen?.tehtavatYhteensa || 0;
             const progressPercent = total > 0 ? Math.floor((completed / total) * 100) : 0;
 
+            {/* Kurssikortit */ }
             return (
               <ds-card
                 key={course.id}

@@ -10,7 +10,6 @@ import { kurssiOsallistuminen } from "../mockData/kurssiOsallistuminen";
 
 export default function TeacherStudentListPage() {
   const { courseId, yearId, groupId } = useParams();
-  const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
   // Breadcrumb data
@@ -59,7 +58,7 @@ export default function TeacherStudentListPage() {
               ds-text={year.nimi}
               ds-icon="chevron_forward"
               ds-weight="bold"
-              ds-href={`/teacherYears/${yearId}/teacherCourses`}
+              ds-href={`/teacherYears`}
             />
           )}
           {course && (
@@ -110,7 +109,7 @@ export default function TeacherStudentListPage() {
                 key={student.id}
                 ds-eyebrow={student.opiskelijanumero}
                 ds-heading={`${student.etunimi} ${student.sukunimi}`}
-                ds-url="#"
+                ds-url={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/${groupId}/studentDetails/${student.id}`}
                 ds-url-target="_self"
               >
                 {/* Progress bar */}
