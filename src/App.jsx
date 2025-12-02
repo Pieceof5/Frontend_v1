@@ -15,9 +15,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/teacherYears" element={<TeacherYearsPage />} />
         <Route path="/teacherYears/:yearId/teacherCourses" element={<TeacherCoursesPage />} />
-        <Route path="/teacherYears/:yearId/teacherCourses/:courseName" element={<TeacherGroupsPage />} />
-        <Route path="/teacherYears/:yearId/teacherCourses/:courseName/teacherAddCards" element={<TeacherAddCardPage />} />
-        <Route path="/teacherYears/:yearId/teacherCourses/:courseName/group/:groupId" element={<TeacherStudentListPage />} />
+        <Route path="/teacherYears/:yearId/teacherCourses/:courseId/groups" element={<TeacherGroupsPage />} />
+        <Route path="/teacherYears/:yearId/teacherCourses/:courseId/groups/teacherAddCards" element={<TeacherAddCardPage />} />
+        <Route path="/teacherYears/:yearId/teacherCourses/:courseId/groups/:groupId" element={<TeacherStudentListPage />} />
         <Route path="/studentCourses" element={<StudentFrontPage />} />
       </Routes>
     </Router>

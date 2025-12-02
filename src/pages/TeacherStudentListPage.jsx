@@ -5,9 +5,10 @@ import { studentFrontStyles as styles } from "../styles/commonStyles";
 import { opiskelijat } from "../mockData/opiskelijat";
 import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
+import { kurssit } from "../mockData/kurssit";
 
 export default function TeacherStudentListPage() {
-  const { courseName, yearId, groupId } = useParams();
+  const { courseId, yearId, groupId } = useParams();
   const [query, setQuery] = useState("");
 
   // Opiskelijat tässä ryhmässä
@@ -28,6 +29,9 @@ export default function TeacherStudentListPage() {
   // Year for breadcrumbs
   const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
 
+  // Course for breadcrumbs
+  const course = kurssit.find((c) => c.id === parseInt(courseId));
+
   return (
     <div style={styles.app}>
       <LayoutCard
@@ -45,7 +49,6 @@ export default function TeacherStudentListPage() {
         {/* Navigointipalkit */}
         <div style={{ marginTop: "-10px", marginBottom: "30px" }}>
           <ds-link ds-text="Kotisivu" ds-icon="chevron_forward" ds-weight="bold" ds-href="/" />
-          <ds-link ds-text="Lukuvuodet" ds-icon="chevron_forward" ds-weight="bold" ds-href="/teacherYears" />
           {year && (
             <ds-link
               ds-text={year.nimi}
@@ -54,35 +57,19 @@ export default function TeacherStudentListPage() {
               ds-href={`/teacherYears/${yearId}/teacherCourses`}
             />
           )}
+          {course && (
+            <ds-link
+              ds-text={course.nimi}
+              ds-icon="chevron_forward"
+              ds-weight="bold"
+              ds-href={`/teacherYears/${yearId}/teacherCourses`}
+            />
+          )}
           <ds-link
-            ds-text="Kurssit"
+            ds-text={`Ryhmä ${groupId}.`}
             ds-icon="chevron_forward"
             ds-weight="bold"
-            ds-href={
-              yearId
-                ? `/teacherYears/${yearId}/teacherCourses`
-                : "/teacherCourses"
-            }
-          />
-          <ds-link
-            ds-text="Ryhmät ja kortit"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={
-              yearId
-                ? `/teacherYears/${yearId}/teacherCourses/${courseName}`
-                : `/teacherCourses/${courseName}`
-            }
-          />
-          <ds-link
-            ds-text={`Ryhmä ${groupId}: Opiskelijat`}
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={
-              yearId
-                ? `/teacherYears/${yearId}/teacherCourses/${courseName}/group/${groupId}`
-                : `/teacherCourses/${courseName}/group/${groupId}`
-            }
+            ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups`}
           />
         </div>
 

@@ -6,10 +6,11 @@ import LayoutCard from "../components/LayoutCard";
 import { studentFrontStyles as styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
+import { kurssit } from "../mockData/kurssit";
 
 export default function TeacherGroupsPage() {
   const navigate = useNavigate();
-  const { courseName, yearId } = useParams();
+  const { courseId, yearId } = useParams();
 
   const [activeView, setActiveView] = useState("groups");
   const [query, setQuery] = useState("");
@@ -36,7 +37,11 @@ export default function TeacherGroupsPage() {
     card.nimi?.toLowerCase().includes(query.toLowerCase())
   );
 
+  // Year for breadcrumbs
   const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
+
+  // Course for breadcrumbs
+  const course = kurssit.find((c) => c.id === parseInt(courseId));
 
   return (
     <div style={styles.app}>
@@ -58,6 +63,14 @@ export default function TeacherGroupsPage() {
           {year && (
             <ds-link
               ds-text={year.nimi}
+              ds-icon="chevron_forward"
+              ds-weight="bold"
+              ds-href={`/teacherYears`}
+            />
+          )}
+          {course && (
+            <ds-link
+              ds-text={course.nimi}
               ds-icon="chevron_forward"
               ds-weight="bold"
               ds-href={`/teacherYears/${yearId}/teacherCourses`}
@@ -88,7 +101,7 @@ export default function TeacherGroupsPage() {
         {/* Ryhmänäkymä */}
         {activeView === "groups" ? (
           <>
-            <h1 style={dsStyles.pageTitle}>{courseName}: Ryhmät</h1>
+            <h1 style={dsStyles.pageTitle}>{course.kurssitunnus}: Ryhmät</h1>
 
             {/* Hakukenttä*/}
             <ds-text-input
@@ -110,8 +123,8 @@ export default function TeacherGroupsPage() {
                     ds-subtitle={`${studentCount} opiskelijaa`}
                     ds-url={
                       yearId
-                        ? `/teacherYears/${yearId}/teacherCourses/${courseName}/group/${ryhma.id}`
-                        : `/teacherCourses/${courseName}/group/${ryhma.id}`
+                        ? `/teacherYears/${yearId}/teacherCourses/${courseId}/groups/${ryhma.id}`
+                        : `/teacherCourses/${courseId}/groups/${ryhma.id}`
                     }
                     ds-url-target="_self"
                   />
@@ -122,7 +135,7 @@ export default function TeacherGroupsPage() {
         ) : (
           <>
             {/* Korttinäkymä */}
-            <h1 style={dsStyles.pageTitle}>{courseName}: Kortit</h1>
+            <h1 style={dsStyles.pageTitle}>{course.kurssitunnus}: Kortit</h1>
 
             {/* Hakukenttä EI TOIMINNALLINEN */}
             <ds-text-input
@@ -156,8 +169,8 @@ export default function TeacherGroupsPage() {
                 ds-full-width="true"
                 onClick={() => {
                   const route = yearId
-                    ? `/teacherYears/${yearId}/teacherCourses/${courseName}/teacherAddCards`
-                    : `/teacherCourses/${courseName}/teacherAddCards`;
+                    ? `/teacherYears/${yearId}/teacherCourses/${courseId}/groups/teacherAddCards`
+                    : `/teacherCourses/${courseId}/groups/teacherAddCards`;
                   navigate(route);
                 }}
               />

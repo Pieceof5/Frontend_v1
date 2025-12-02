@@ -4,13 +4,13 @@ import LayoutCard from "./LayoutCard";
 import { teacherAddCardStyles as styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
+import { kurssit } from "../mockData/kurssit";
 
-function TeacherAddCard({ courseName }) {
+function TeacherAddCard({ courseId }) {
   const [cards, setCards] = useState([]);
   const [newCardName, setNewCardName] = useState("");
   const [savedCards, setSavedCards] = useState([]);
   const { yearId } = useParams();
-  const navigate = useNavigate();
 
   // Helper to safely read event values from both web components and native inputs
   const safeEventValue = (e) => {
@@ -36,6 +36,10 @@ function TeacherAddCard({ courseName }) {
 
   // Get year info for breadcrumbs
   const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
+
+  // Get course info for breadcrumbs
+  const course = kurssit.find((c) => c.id === parseInt(courseId));
+  console.log(course);
 
   const deleteCard = (index) => {
     const newCards = [...cards];
@@ -202,30 +206,28 @@ function TeacherAddCard({ courseName }) {
         {/* Breadcrumbs */}
         <div style={{ marginTop: "-10px", marginBottom: "30px" }}>
           <ds-link ds-text="Kotisivu" ds-icon="chevron_forward" ds-weight="bold" ds-href="/" />
-          <ds-link ds-text="Lukuvuodet" ds-icon="chevron_forward" ds-weight="bold" ds-href="/teacherYears" />
           {year && (
-            <ds-link ds-text={year.nimi} ds-icon="chevron_forward" ds-weight="bold" ds-href={`/teacherYears/${yearId}/teacherCourses`} />
-          )}
-          <ds-link
-            ds-text="Kurssit"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={yearId ? `/teacherYears/${yearId}/teacherCourses` : "/teacherCourses"}
-          />
-          <ds-link
-            ds-text="Ryhmät ja kortit"
-            ds-icon="chevron_forward"
-            ds-weight="bold"
-            ds-href={yearId ? `/teacherYears/${yearId}/teacherCourses/${courseName}` : `/teacherCourses/${courseName}`}
-          />
-          {courseName && (
             <ds-link
-              ds-text="Suoritekorttien luonti"
+              ds-text={year.nimi}
               ds-icon="chevron_forward"
               ds-weight="bold"
-              ds-href={yearId ? `/teacherYears/${yearId}/teacherCourses/${courseName}/teacherAddCards` : `/teacherCourses/${courseName}/teacherAddCards`}
+              ds-href={`/teacherYears/${yearId}/teacherCourses`}
             />
           )}
+          {course && (
+            <ds-link
+              ds-text={course.nimi}
+              ds-icon="chevron_forward"
+              ds-weight="bold"
+              ds-href={`/teacherYears/${yearId}/teacherCourses`}
+            />
+          )}
+          <ds-link
+            ds-text="Uusi suoritekortti"
+            ds-icon="chevron_forward"
+            ds-weight="bold"
+            ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups`}
+          />
         </div>
 
         <h2 style={dsStyles.pageTitle}>Suoritekortit</h2>
@@ -367,7 +369,7 @@ function TeacherAddCard({ courseName }) {
 
 
                             <div style={{ marginTop: 8 }}>
-                              
+
                             </div>
 
                           </th>

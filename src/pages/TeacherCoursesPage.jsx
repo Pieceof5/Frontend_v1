@@ -84,7 +84,7 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
                 ds-eyebrow={course.kurssitunnus || ""}
                 ds-heading={course.nimi}
                 ds-subtitle={`Edistyminen ${completed}/${total}`}
-                ds-url={yearId ? `/teacherYears/${yearId}/teacherCourses/${course.kurssitunnus}` : `/teacherCourses/${course.kurssitunnus}`}
+                ds-url={yearId ? `/teacherYears/${yearId}/teacherCourses/${course.id}/groups` : `/teacherCourses/${course.id}/groups`}
                 ds-url-target="_self"
                 ds-tag="Kurssi"
               >
