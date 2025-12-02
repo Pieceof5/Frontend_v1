@@ -109,6 +109,7 @@ export default function TeacherStudentListPage() {
                 key={student.id}
                 ds-eyebrow={student.opiskelijanumero}
                 ds-heading={`${student.etunimi} ${student.sukunimi}`}
+                ds-subtitle={`Edistyminen ${completed}/${total}`}
                 ds-url={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/${groupId}/studentDetails/${student.id}`}
                 ds-url-target="_self"
               >
