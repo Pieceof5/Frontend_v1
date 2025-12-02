@@ -169,6 +169,7 @@ export const studentFrontStyles = {
     display: "flex",
     gap: "8px",
     marginBottom: "15px",
+    marginTop: "15px",
     flexWrap: "wrap",
   },
   navButton: {

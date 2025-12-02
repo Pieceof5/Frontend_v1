@@ -49,19 +49,33 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
         contentStyle={{ padding: "15px 30px" }}
         footer={<p style={styles.footerText}>@Helsingin Yliopisto</p>}
       >
+
+
         {/* Takaisin-painike */}
-        <button style={styles.backButton} onClick={() => navigate(-1)}>
-          ← Takaisin
-        </button>
+        <ds-button onClick={() => navigate(-1)}
+  ds-size="small"
+  ds-value="Takaisin"
+  ds-variant="secondary"
+  ds-icon-position="start"
+  ds-icon="arrow-back"
+></ds-button>
+
+
 
         {/* Kurssinavigointipalkki */}
         <div style={styles.navBar}>
           {kurssitOppilaalle.map((k) => (
-            <button key={k.id} style={styles.navButton}>
-              {k.nimi}
-            </button>
+            <ds-button key={k.id} 
+            ds-size="small"
+            ds-value={k.nimi}
+            ds-variant="primary"
+            ></ds-button>
           ))}
         </div>
+
+
+
+
 
         {/* Kurssit isona painikkeena */}
 
