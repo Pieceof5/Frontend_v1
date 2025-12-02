@@ -91,7 +91,6 @@ export default function TeacherGroupsPage() {
           <ds-button
             ds-value="Ryhmät"
             ds-variant="secondary"
-            ds-colour="black"
             onClick={() => {
               setQuery("");
               setActiveView("groups");
@@ -100,7 +99,6 @@ export default function TeacherGroupsPage() {
           <ds-button
             ds-value="Kortit"
             ds-variant="secondary"
-            ds-colour="black"
             onClick={() => {
               setQuery("");
               setActiveView("cards");
@@ -128,6 +126,7 @@ export default function TeacherGroupsPage() {
                 return (
                   <ds-card
                     key={ryhma.id}
+                    ds-eyebrow={`Aloitusaika: ${ryhma.aloitusaika}`}
                     ds-heading={ryhma.nimi}
                     ds-subtitle={`${studentCount} opiskelijaa`}
                     ds-url={

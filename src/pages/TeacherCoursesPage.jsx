@@ -93,8 +93,8 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
             return (
               <ds-card
                 key={course.id}
-                ds-eyebrow={course.nimi}
-                ds-heading={course.kurssitunnus || ""}
+                ds-eyebrow={course.kurssitunnus || ""}
+                ds-heading={course.nimi}
                 ds-subtitle={`Edistyminen ${completed}/${total}`}
                 ds-url={yearId ? `/teacherYears/${yearId}/teacherCourses/${course.kurssitunnus}` : `/teacherCourses/${course.kurssitunnus}`}
                 ds-url-target="_self"
