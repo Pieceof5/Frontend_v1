@@ -66,8 +66,7 @@ export default function TeacherStudentListPage() {
             />
           )}
           <ds-link
-            ds-text={`Ryhmä ${groupId}.`}
-            ds-icon="chevron_forward"
+            ds-text={`Ryhmä ${groupId}`}
             ds-weight="bold"
             ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups`}
           />

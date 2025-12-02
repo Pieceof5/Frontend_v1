@@ -37,7 +37,6 @@ function TeacherYearsPage() {
         <div style={{ marginTop: "-10px", marginBottom: "30px" }}>
           <ds-link
             ds-text="Kotisivu"
-            ds-icon="chevron_forward"
             ds-weight="bold"
             ds-href="/"
           ></ds-link>

@@ -71,7 +71,6 @@ export default function TeacherGroupsPage() {
           {course && (
             <ds-link
               ds-text={course.nimi}
-              ds-icon="chevron_forward"
               ds-weight="bold"
               ds-href={`/teacherYears/${yearId}/teacherCourses`}
             />

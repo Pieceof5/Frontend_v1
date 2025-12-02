@@ -48,7 +48,6 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
           {year && (
             <ds-link
               ds-text={year.nimi}
-              ds-icon="chevron_forward"
               ds-weight="bold"
               ds-href={`/teacherYears`}
             />
