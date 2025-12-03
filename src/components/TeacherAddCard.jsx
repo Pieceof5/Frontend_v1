@@ -5,6 +5,7 @@ import { teacherAddCardStyles as styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssit } from "../mockData/kurssit";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 function TeacherAddCard({ courseId }) {
   const [cards, setCards] = useState([]);
@@ -231,6 +232,7 @@ function TeacherAddCard({ courseId }) {
         </div>
 
         <h2 style={dsStyles.pageTitle}>Suoritekortit</h2>
+        <p style={commonStyles.divider}></p>
         <p style={dsStyles.subTitle}>Luo ja hallinnoi tehtäväkortteja.</p>
 
         <ds-text-input

@@ -1,16 +1,19 @@
 import LayoutCard from "../components/LayoutCard";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import { styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssit } from "../mockData/kurssit";
 import { tehtavat } from "../mockData/tehtavat";
+import GradeSlider from "../components/GradeSlider";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 
 
 function TeacherGradings() {
     const [query, setQuery] = useState("");
+    const [grade, setGrade] = useState(1);
     const { courseId, yearId, groupId, studentId, taskId } = useParams();
 
     // Year for breadcrumbs
@@ -30,6 +33,7 @@ function TeacherGradings() {
                 </div>
             }
             footer={<p style={dsStyles.footer}>@Helsingin Yliopisto</p>}
+            
         >
 
             {/* Breadcrumbs */}
@@ -74,6 +78,18 @@ function TeacherGradings() {
                     ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/${groupId}/${studentId}/studentTasks`}
                 />
             </div>
+
+            <h1 style={dsStyles.pageTitle}>{task.kuvaus}</h1>
+            <p style={commonStyles.divider}/>
+
+            <div>
+                <h2 style={dsStyles.labelText}>Arviointi</h2>
+                <GradeSlider 
+                value={grade}
+                onChange={setGrade} />
+            </div>
+
+            
 
         </LayoutCard>
     </div>;

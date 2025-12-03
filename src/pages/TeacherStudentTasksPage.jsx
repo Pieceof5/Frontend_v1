@@ -7,6 +7,7 @@ import { tehtavat } from "../mockData/tehtavat";
 import { kurssit } from "../mockData/kurssit";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 import { opiskelijat } from "../mockData/opiskelijat";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 
 function TeacherStudentTasksPage() {
@@ -82,6 +83,7 @@ function TeacherStudentTasksPage() {
                 </div>
 
                 <h1 style={dsStyles.pageTitle}>Tehtävät</h1>
+                <p style={commonStyles.divider}/>
 
                 {/* Hakukenttä */}
                 <ds-text-input

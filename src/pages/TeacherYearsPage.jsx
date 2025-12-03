@@ -4,6 +4,7 @@ import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssit } from "../mockData/kurssit";
 import { styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 // Vuosivalikko (/teacherYears)
 function TeacherYearsPage() {
@@ -44,6 +45,7 @@ function TeacherYearsPage() {
 
         {/* Sivun otsikko */}
         <h1 style={dsStyles.pageTitle}>Lukuvuodet</h1>
+        <p style={commonStyles.divider}></p>
 
         {/* Hakukenttä */}
         <ds-text-input

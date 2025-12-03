@@ -7,6 +7,7 @@ import { studentFrontStyles as styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssit } from "../mockData/kurssit";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 export default function TeacherGroupsPage() {
   const navigate = useNavigate();
@@ -101,6 +102,7 @@ export default function TeacherGroupsPage() {
         {activeView === "groups" ? (
           <>
             <h1 style={dsStyles.pageTitle}>{course.kurssitunnus}: Ryhmät</h1>
+            <div style={{...commonStyles.divider, marginBottom: "15px"}}/>
 
             {/* Hakukenttä*/}
             <ds-text-input
@@ -135,6 +137,7 @@ export default function TeacherGroupsPage() {
           <>
             {/* Korttinäkymä */}
             <h1 style={dsStyles.pageTitle}>{course.kurssitunnus}: Kortit</h1>
+            <div style={{...commonStyles.divider, marginBottom: "15px"}}/>
 
             {/* Hakukenttä EI TOIMINNALLINEN */}
             <ds-text-input

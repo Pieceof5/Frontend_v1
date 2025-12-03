@@ -6,6 +6,7 @@ import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssiOsallistuminen } from "../mockData/kurssiOsallistuminen";
 import { styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 function TeacherCoursesPage({ opiskelijaId = 1 }) {
   const { yearId } = useParams();
@@ -56,6 +57,7 @@ function TeacherCoursesPage({ opiskelijaId = 1 }) {
 
         {/* Sivun otsikko */}
         <h1 style={dsStyles.pageTitle}>Kurssit</h1>
+        <p style={commonStyles.divider}></p>
 
         {/* Hakukenttä */}
         <ds-text-input

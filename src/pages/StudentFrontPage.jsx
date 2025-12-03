@@ -5,6 +5,7 @@ import { kurssiOsallistuminen } from "../mockData/kurssiOsallistuminen";
 import LayoutCard from "../components/LayoutCard";
 import { studentFrontStyles as styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 export default function StudentFrontPage({ opiskelijaId = 1 }) {
   const opiskelija = opiskelijat.find((o) => o.id === opiskelijaId) || {};
@@ -68,6 +69,8 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
         </div>
 
         <h1 style={dsStyles.pageTitle}>Kurssit</h1>
+        <p style={commonStyles.divider}></p>
+        
 
         {/* Hakukenttä */}
         <ds-text-input

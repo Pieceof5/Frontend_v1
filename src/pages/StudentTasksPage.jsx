@@ -5,6 +5,7 @@ import { dsStyles } from "../styles/dsStyles";
 import { useParams } from "react-router-dom";
 import { tehtavat } from "../mockData/tehtavat";
 import { kurssit } from "../mockData/kurssit";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 
 function StudentTasksPage() {
@@ -47,6 +48,7 @@ function StudentTasksPage() {
                 </div>
 
                 <h1 style={dsStyles.pageTitle}>Tehtävät</h1>
+                <p style={commonStyles.divider}></p>
 
                 {/* Hakukenttä */}
                 <ds-text-input

@@ -7,6 +7,7 @@ import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssit } from "../mockData/kurssit";
 import { kurssiOsallistuminen } from "../mockData/kurssiOsallistuminen";
+import { styles as commonStyles } from "../styles/commonStyles";
 
 export default function TeacherStudentListPage() {
   const { courseId, yearId, groupId } = useParams();
@@ -79,6 +80,7 @@ export default function TeacherStudentListPage() {
 
         {/* Title */}
         <h1 style={dsStyles.pageTitle}>Ryhmä {groupId}: Opiskelijat</h1>
+        <p style={commonStyles.divider} />
 
         {/* Search */}
         <ds-text-input
