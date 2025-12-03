@@ -4,7 +4,7 @@ import { styles } from "../styles/commonStyles";
 import { dsStyles } from "../styles/dsStyles";
 import { useParams } from "react-router-dom";
 import { tehtavat } from "../mockData/tehtavat";
-
+import { kurssit } from "../mockData/kurssit";
 
 
 function StudentTasksPage() {
@@ -23,6 +23,7 @@ function StudentTasksPage() {
         return matchesCourse && matchesQuery;
     });
 
+    const course = courseId ? kurssit.find((k) => k.id === parseInt(courseId)) : null;
 
     return (
 
@@ -42,7 +43,7 @@ function StudentTasksPage() {
                 {/* Navigointipalkit */}
                 <div style={{ marginTop: "-10px", marginBottom: "30px" }}>
                     <ds-link ds-text="Kotisivu" ds-weight="bold" ds-href="/" ds-icon="chevron-forward" />
-                    <ds-link ds-text="Kurssit" ds-weight="bold" ds-href="/studentCourses" />
+                    <ds-link ds-text={course.nimi} ds-weight="bold" ds-href="/studentCourses" />
                 </div>
 
                 <h1 style={dsStyles.pageTitle}>Tehtävät</h1>

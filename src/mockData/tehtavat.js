@@ -1,4 +1,5 @@
 export const tehtavat = [
+    // Kariologia - kurssin tehtävät
     {
         id: 1,
         kurssiId: 1,
@@ -20,4 +21,20 @@ export const tehtavat = [
         pvm: "14.11.2025",
         tila: "Kesken"
     },
+
+    // Hammaslääketieteen perusteet - kurssin tehtävät
+    {
+        id: 4,
+        kurssiId: 3,
+        kuvaus: "Hammasanatomian perusteet",
+        pvm: "1.9.2025",
+        tila: "Valmis"
+    },
+    {
+        id: 5,
+        kurssiId: 3,
+        kuvaus: "Hammasanatomian perusteet 2",
+        pvm: "2.9.2025",
+        tila: "Kesken"
+    }
 ];
