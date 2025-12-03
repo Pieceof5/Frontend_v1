@@ -1,10 +1,11 @@
 import React from "react";
+import { dsStyles } from "../styles/dsStyles";
 
 export default function GradeSlider({ value, onChange }) {
   const numbers = [1, 2, 3, 4, 5];
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", ...dsStyles.bodyText, }}>
       {/* Slider */}
       <input
         type="range"
@@ -16,7 +17,7 @@ export default function GradeSlider({ value, onChange }) {
         style={{
           width: "100%",
           accentColor: "#005a94",
-          marginBottom: "10px"
+          marginBottom: "10px",
         }}
       />
 
