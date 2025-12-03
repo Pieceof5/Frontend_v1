@@ -5,7 +5,7 @@ export default function GradeSlider({ value, onChange }) {
   const numbers = [1, 2, 3, 4, 5];
 
   return (
-    <div style={{ width: "100%", ...dsStyles.bodyText, }}>
+    <div style={{ width: "100%", ...dsStyles.labelText, }}>
       {/* Slider */}
       <input
         type="range"
