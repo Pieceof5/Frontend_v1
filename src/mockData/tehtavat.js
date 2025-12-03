@@ -34,7 +34,7 @@ export const tehtavat = [
         id: 5,
         kurssiId: 3,
         kuvaus: "Hammasanatomian perusteet 2",
-        pvm: "2.9.2025",
+        pvm: "2.11.2025",
         tila: "Kesken"
     }
 ];

@@ -9,7 +9,7 @@ import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 
 export default function TeacherStudentDetailsPage({ opiskelijaId = 1 }) {
-    const { courseId, yearId, groupId } = useParams();
+    const { courseId, yearId, groupId, studentId } = useParams();
     const opiskelija = opiskelijat.find((o) => o.id === opiskelijaId);
     const [query, setQuery] = useState("");
 
@@ -120,12 +120,9 @@ export default function TeacherStudentDetailsPage({ opiskelijaId = 1 }) {
                             return (
                                 <ds-card
                                     key={k.id}
-                                    onClick={() =>
-                                        alert(`Siirryt suoritekortille: ${k.nimi}`)
-                                    }
                                     ds-heading={k.nimi}
                                     ds-eyebrow={k.kurssitunnus || ""}
-                                    ds-url="#"
+                                    ds-url={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/${groupId}/studentDetails/${studentId}/studentTasks`}
                                     ds-url-target="_self"
                                     ds-subtitle={`Edistyminen ${k.tehtavatValmiina || 0}/${k.tehtavatYhteensa || 0
                                         }`}
