@@ -91,7 +91,9 @@ function TeacherGradings() {
             </div>
 
             <ds-text-area
+                style={{ marginTop: "15px" }}
                 ds-full-width="true"
+                ds-placeholder="Palaute opiskelijalle..."
             >
             </ds-text-area>
 
