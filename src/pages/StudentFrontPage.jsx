@@ -26,7 +26,7 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
         (k.kurssitunnus || "").toLowerCase().includes(q)
       );
     })
-    .sort((a, b) => a.nimi.localeCompare(b.nimi))
+    .sort((a, b) => a.id - b.id)
     .map((k) => {
       const osallistuminen = kurssiOsallistuminen.find(
         (ko) => ko.id === k.id && ko.opiskelijaId === opiskelija.id
@@ -48,9 +48,9 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
               ds-name="ds_flame"
               ds-size="4rem"
               ds-colour="ds-palette-black-95" />
-              <div>
-                <h2 style={{ ...dsStyles.pageTitle }}>Tervetuloa, {opiskelija.etunimi} {opiskelija.sukunimi}!</h2>
-              </div>
+            <div>
+              <h2 style={{ ...dsStyles.pageTitle }}>Tervetuloa, {opiskelija.etunimi} {opiskelija.sukunimi}!</h2>
+            </div>
           </div>
         }
         footer={<p style={dsStyles.footer}>@Helsingin Yliopisto</p>}
@@ -70,7 +70,7 @@ export default function StudentFrontPage({ opiskelijaId = 1 }) {
 
         <h1 style={dsStyles.pageTitle}>Kurssit</h1>
         <p style={commonStyles.divider}></p>
-        
+
 
         {/* Hakukenttä */}
         <ds-text-input
