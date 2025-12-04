@@ -105,7 +105,7 @@ function StudentGradingsPage() {
                             }}
                         >
                             <p>{arviointi.pvm}</p>
-                            <p style={{ fontWeight: "bold" }}>
+                            <p>
                                 {opettaja ? `${opettaja.etunimi} ${opettaja.sukunimi}` : "Tuntematon opettaja"}
                             </p>
                         </div>
