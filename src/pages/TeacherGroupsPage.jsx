@@ -8,6 +8,7 @@ import { dsStyles } from "../styles/dsStyles";
 import { vuosikurssit } from "../mockData/vuosikurssit";
 import { kurssit } from "../mockData/kurssit";
 import { styles as commonStyles } from "../styles/commonStyles";
+import { tehtavat } from "../mockData/tehtavat";
 
 export default function TeacherGroupsPage() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function TeacherGroupsPage() {
 
   const [activeView, setActiveView] = useState("groups");
   const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
 
   // Groups sorted alphabetically
   const ryhmalistaus = [...ryhmat].sort((a, b) =>
@@ -31,12 +33,16 @@ export default function TeacherGroupsPage() {
     ryhma.nimi.toLowerCase().includes(query.toLowerCase())
   );
 
-  // Placeholder card list
-  const kortit = [];
 
-  const filteredCards = kortit.filter((card) =>
-    card.nimi?.toLowerCase().includes(query.toLowerCase())
+  const filteredCards = tehtavat.filter((card) =>
+    card.kuvaus.toLowerCase().includes(query.toLowerCase())
   );
+
+  // Pagination for cards (3 per page)
+  const cardsPerPage = 3;
+  const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
+  const startIdx = currentPage * cardsPerPage;
+  const paginatedCards = filteredCards.slice(startIdx, startIdx + cardsPerPage);
 
   // Year for breadcrumbs
   const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
@@ -145,26 +151,50 @@ export default function TeacherGroupsPage() {
               ds-placeholder="Hae kortteja"
               ds-icon="search"
               value={query}
-              onInput={(e) => setQuery(e.target.value)}
+              onInput={(e) => {
+                setQuery(e.target.value);
+                setCurrentPage(0);
+              }}
             />
 
             <div style={styles.itemContainer}>
               {filteredCards.length === 0 ? (
                 <p>Ei vielä kortteja. Lisää uusi kortti.</p>
               ) : (
-                filteredCards.map((kortti) => (
-                  <button key={kortti.id} style={styles.itemButton}>
-                    <div style={styles.courseInfo}>
-                      <p>{kortti.nimi}</p>
-                      <div style={styles.arrow}>→</div>
-                    </div>
-                  </button>
+                paginatedCards.map((tehtava) => (
+                  <ds-card
+                    key={tehtava.id}
+                    ds-eyebrow={tehtava.pvm || "Päivämäärä puuttuu"}
+                    ds-heading={tehtava.kuvaus}
+                    ds-subtitle={`Luotu: ${tehtava.luotu}`}
+                  />
                 ))
               )}
             </div>
 
+            {/* Pagination controls */}
+            {totalPages > 1 && (
+              <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+                <ds-button
+                  ds-value="<"
+                  ds-variant="supplementary"
+                  onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
+                  disabled={currentPage === 0}
+                />
+                <span style={{ ...dsStyles.bodyText, alignSelf: "center" }}>
+                  Sivu {currentPage + 1} / {totalPages}
+                </span>
+                <ds-button
+                  ds-value=">"
+                  ds-variant="supplementary"
+                  onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
+                  disabled={currentPage === totalPages - 1}
+                />
+              </div>
+            )}
+
             {/* Luo uusi kortti -painike */}
-            <div style={{ ...dsStyles.buttonContainer, marginTop: "120px" }}>
+            <div style={{ ...dsStyles.buttonContainer, marginTop: "-100px" }}>
               <ds-button
                 ds-value="Luo uusi kortti"
                 ds-icon="edit"
