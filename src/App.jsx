@@ -31,6 +31,7 @@ function App() {
         <Route path="/teacherYears/:yearId/teacherCourses/:courseId/groups/:groupId" element={<TeacherStudentListPage />} />
         <Route path="/teacherYears/:yearId/teacherCourses/:courseId/groups/:groupId/:studentId/studentTasks" element={<TeacherStudentTasksPage />} />
         <Route path="/teacherYears/:yearId/teacherCourses/:courseId/groups/:groupId/:studentId/studentTasks/:taskId/teacherGradings" element={<TeacherGradings />} />
+        <Route path="/teacherYears/:yearId/teacherCourses/:courseId/teacherAddCard" element={<TeacherAddCardPage />} />
 
         {/* Student routes */}
         <Route path="/studentCourses" element={<StudentFrontPage />} />

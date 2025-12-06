@@ -199,7 +199,7 @@ export default function TeacherGroupsPage() {
                 ds-value="Luo uusi kortti"
                 ds-icon="edit"
                 ds-full-width="true"
-                onClick={() => {navigate(`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/teacherCreateCards`);
+                onClick={() => {navigate(`/teacherYears/${yearId}/teacherCourses/${courseId}/teacherAddCard`);
                 }}
               />
             </div>
