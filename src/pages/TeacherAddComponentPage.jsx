@@ -11,22 +11,13 @@ import { kortit } from "../mockData/kortit";
 import { styles as commonStyles } from "../styles/commonStyles";
 
 
-function TeacherCreateCardsPage() {
-    const { courseId, yearId } = useParams();
+function TeacherAddComponentPage() {
     const navigate = useNavigate();
-    const [components, setComponents] = useState([]);
+    const { courseId, yearId } = useParams();
 
     // Year for breadcrumbs
     const year = vuosikurssit.find((y) => y.id === parseInt(yearId));
     const course = kurssit.find((c) => c.id === parseInt(courseId));
-
-    const addComponentRow = () => {
-        setComponents([...components, { id: Date.now(), value: "" }]);
-    };
-
-    const deleteComponentRow = (id) => {
-        setComponents(components.filter((comp) => comp.id !== id));
-    };
 
     return (
         <div style={styles.app}>
@@ -68,85 +59,53 @@ function TeacherCreateCardsPage() {
                     )}
                     <ds-link
                         ds-text="Luo kortti"
+                        ds-icon="chevron_forward"
                         ds-weight="bold"
                         ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups`}
+                    />
+                    <ds-link
+                        ds-text="Uusi komponentti"
+                        ds-weight="bold"
+                        ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/teacherCreateCards`}
                     />
                 </div>
 
                 {/* Sivun otsikko */}
-                <h1 style={dsStyles.pageTitle}>Uusi kortti</h1>
+                <h1 style={dsStyles.pageTitle}>Uusi komponentti</h1>
                 <p style={commonStyles.divider}></p>
 
                 {/* Sisältö */}
                 <ds-text-input
                     style={dsStyles.textInput}
-                    ds-label="Kortin nimi"
-                >
-                </ds-text-input>
+                    ds-label="Komponentin nimi"
+                />
+
                 <ds-combobox
                     style={dsStyles.textInput}
-                    ds-label="Kurssi"
+                    ds-label="Komponentin tyyppi"
                     ds-filtering-strategy="dynamic"
                 >
-                    {(yearId ? kurssit.filter(c => c.vuosikurssiId === parseInt(yearId)) : kurssit).map((c) => (
-                        <ds-option key={c.id} ds-value={c.id}>{c.nimi} {c.kurssitunnus ? `(${c.kurssitunnus})` : ''}</ds-option>
-                    ))}
+                    <ds-option ds-value="Tekstikenttä">Tekstikenttä</ds-option>
+                    <ds-option ds-value="Valintaruutu">Valintaruutu</ds-option>
+                    <ds-option ds-value="Pudotusvalikko">Pudotusvalikko</ds-option>
                 </ds-combobox>
 
-                
-
-                {components.map((comp, idx) => (
-                    <div key={comp.id} style={{ display: "flex", gap: "8px", alignItems: "flex-end" }}>
-                        <ds-combobox
-                            style={{ ...dsStyles.textInput, flex: 1 }}
-                            ds-label={`Komponentti ${idx + 1}`}
-                            ds-filtering-strategy="none"
-                        >
-                            {(kortit.sarakkeet || []).map((s, i) => (
-                                <ds-option key={i} ds-value={s}>{s}</ds-option>
-                            ))}
-                        </ds-combobox>
-                        <ds-button
-                            onClick={() => deleteComponentRow(comp.id)}
-                            ds-variant="supplementary"
-                            ds-icon="close-small"
-                            ds-colour="black"
-                            style={{ ...dsStyles.bodyText, marginBottom: "20px", fontSize: "14px" }}
-                        />
-                    </div>
-                ))}
-
-                <div style={{ ...dsStyles.buttonContainer, marginTop: "-190px", marginBottom: "90px" }}>
+                <div style={dsStyles.buttonContainer}>
                     <ds-button
-                        onClick={addComponentRow}
+                        onClick={() => { alert("Komponentti lisätty!"); }}
                         ds-value="Lisää komponentti"
-                        ds-variant="supplementary"
-                        ds-icon="add"
-                        ds-colour="blue"
+                        ds-variant="primary"
+                        ds-full-width="true"
                     />
                     <ds-button
-                        onClick={() => navigate(`/teacherYears/${yearId}/teacherCourses/${courseId}/groups/teacherCreateCards/teacherAddComponent`)}
-                        ds-value="Luo komponentti"
-                        ds-variant="supplementary"
-                        ds-colour="blue"
+                        onClick={() => navigate(-1)}
+                        ds-value="Peruuta"
+                        ds-variant="secondary"
+                        ds-full-width="true"
                     />
                 </div>
-                <ds-button
-                    onClick={() => { alert("Kortti luotu!"); }}
-                    ds-value="Tallenna kortti"
-                    ds-variant="primary"
-                    ds-full-width="true"
-                />
-                <ds-button
-                    onClick={() => navigate(-1)}
-                    ds-value="Peruuta"
-                    ds-variant="secondary"
-                    ds-full-width="true"
-                    style={{ marginTop: "10px" }}
-                />
-
             </LayoutCard>
         </div>
-    );
+    )
 }
-export default TeacherCreateCardsPage;
+export default TeacherAddComponentPage;

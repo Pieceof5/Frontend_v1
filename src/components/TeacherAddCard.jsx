@@ -224,14 +224,14 @@ function TeacherAddCard({ courseId }) {
             />
           )}
           <ds-link
-            ds-text="Uusi suoritekortti"
+            ds-text="Luo uusi kortti"
             ds-icon="chevron_forward"
             ds-weight="bold"
             ds-href={`/teacherYears/${yearId}/teacherCourses/${courseId}/groups`}
           />
         </div>
 
-        <h2 style={dsStyles.pageTitle}>Suoritekortit</h2>
+        <h2 style={dsStyles.pageTitle}>Uuden kortin luonti</h2>
         <p style={commonStyles.divider}></p>
         <p style={dsStyles.subTitle}>Luo ja hallinnoi tehtäväkortteja.</p>
 
@@ -256,10 +256,9 @@ function TeacherAddCard({ courseId }) {
         <div style={styles.cardsContainer}>
           {cards.map((card, ci) => (
             <div key={ci} style={styles.cardItem}>
-              <div style={styles.cardHeader}>
-                <h3>{card.name}</h3>
+              <div style={{ ...dsStyles.labelText, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", marginBottom: "10px" }}>
+                <h3 style={{ margin: 0 }}>{card.name}</h3>
                 <ds-button
-                  style={{ marginLeft: "auto" }}
                   ds-value="Poista kortti"
                   ds-variant="secondary"
                   ds-colour="black"
@@ -443,6 +442,7 @@ function TeacherAddCard({ courseId }) {
                 <ds-button
                   style={{ marginLeft: "auto" }}
                   ds-value="Poista kortti"
+                  ds-variant="secondary"
                   ds-colour="black"
                   ds-size="small"
                   ds-icon="close"
@@ -460,7 +460,7 @@ function TeacherAddCard({ courseId }) {
                     <tr>
                       {card.columns.map((col, colIndex) => (
                         <th key={colIndex} style={{ border: "1px solid #ccc", padding: "6px", textAlign: "left" }}>
-                          {col.name}
+                          <span style={dsStyles.bodyText}>{col.name}</span>
                         </th>
                       ))}
                     </tr>
@@ -476,11 +476,11 @@ function TeacherAddCard({ courseId }) {
                               col.options.map((opt, idx) => (
                                 <label key={idx} style={{ display: "block" }}>
                                   <input type="radio" name={`${ci}-${ri}-${colIndex}`} value={opt} checked={row[col.name] === opt} disabled />
-                                  {opt}
+                                  <span style={dsStyles.bodyText}>{opt}</span>
                                 </label>
                               ))
                             ) : (
-                              row[col.name]
+                              <span style={dsStyles.bodyText}>{row[col.name]}</span>
                             )}
                           </td>
                         ))}
